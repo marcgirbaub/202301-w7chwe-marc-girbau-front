@@ -1,8 +1,11 @@
 import { useState } from "react";
+import useUser from "../../hooks/useUser/useUser";
 import { RegisterData } from "../../types";
 import RegisterFormStyled from "./RegisterFormStyled";
 
 const RegisterForm = (): JSX.Element => {
+  const { registerUser } = useUser();
+
   const initialRegisterData: RegisterData = {
     username: "",
     email: "",
@@ -25,6 +28,8 @@ const RegisterForm = (): JSX.Element => {
     userFormData.append("passwordConfirmation", registerData.confirmPassword);
     userFormData.append("location", registerData.location);
     userFormData.append("age", registerData.age);
+
+    registerUser(userFormData);
 
     setRegisterData({ ...initialRegisterData });
   };
