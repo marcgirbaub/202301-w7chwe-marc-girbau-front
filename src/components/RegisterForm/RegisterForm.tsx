@@ -1,8 +1,52 @@
+import { useState } from "react";
+import { RegisterData } from "../../types";
 import RegisterFormStyled from "./RegisterFormStyled";
 
 const RegisterForm = (): JSX.Element => {
+  const initialRegisterData: RegisterData = {
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    age: "",
+    location: "",
+  };
+
+  let userFormData = new FormData();
+
+  const [registerData, setRegisterData] = useState(initialRegisterData);
+
+  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    userFormData.append("username", registerData.username);
+    userFormData.append("email", registerData.email);
+    userFormData.append("password", registerData.password);
+    userFormData.append("passwordConfirmation", registerData.confirmPassword);
+    userFormData.append("location", registerData.location);
+    userFormData.append("age", registerData.age);
+
+    setRegisterData({ ...initialRegisterData });
+  };
+
+  const onChangeFieldHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterData({ ...registerData, [event.target.id]: event.target.value });
+  };
+
+  const onChangeImageHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    userFormData.append("avatar", event.target.files![0]);
+  };
+
+  const areFieldsEmpty =
+    registerData.username === "" ||
+    registerData.password === "" ||
+    registerData.confirmPassword === "" ||
+    registerData.age === "" ||
+    registerData.email === "" ||
+    registerData.location === "";
+
   return (
-    <RegisterFormStyled onSubmit={() => {}}>
+    <RegisterFormStyled onSubmit={onSubmitHandler} autoComplete="off">
       <h2>Sign up</h2>
       <div className="mb-3">
         <label htmlFor="unsername" className="form-label">
@@ -11,8 +55,9 @@ const RegisterForm = (): JSX.Element => {
         <input
           type="text"
           className="form-control"
-          id="unsername"
-          onChange={() => {}}
+          id="username"
+          onChange={onChangeFieldHandler}
+          value={registerData.username}
         />
       </div>
       <div className="mb-3">
@@ -23,7 +68,8 @@ const RegisterForm = (): JSX.Element => {
           type="text"
           className="form-control"
           id="email"
-          onChange={() => {}}
+          onChange={onChangeFieldHandler}
+          value={registerData.email}
         />
       </div>
       <div className="mb-3">
@@ -34,7 +80,8 @@ const RegisterForm = (): JSX.Element => {
           type="password"
           className="form-control"
           id="password"
-          onChange={() => {}}
+          onChange={onChangeFieldHandler}
+          value={registerData.password}
         />
       </div>
       <div className="mb-3">
@@ -44,8 +91,9 @@ const RegisterForm = (): JSX.Element => {
         <input
           type="password"
           className="form-control"
-          id="confirm-password"
-          onChange={() => {}}
+          id="confirmPassword"
+          onChange={onChangeFieldHandler}
+          value={registerData.confirmPassword}
         />
       </div>
       <div className="mb-3">
@@ -56,7 +104,8 @@ const RegisterForm = (): JSX.Element => {
           type="text"
           className="form-control"
           id="age"
-          onChange={() => {}}
+          onChange={onChangeFieldHandler}
+          value={registerData.age}
         />
       </div>
       <div className="mb-3">
@@ -67,7 +116,8 @@ const RegisterForm = (): JSX.Element => {
           type="text"
           className="form-control"
           id="location"
-          onChange={() => {}}
+          onChange={onChangeFieldHandler}
+          value={registerData.location}
         />
       </div>
       <div className="mb-3">
@@ -78,14 +128,18 @@ const RegisterForm = (): JSX.Element => {
           type="file"
           className="form-control"
           id="image"
-          onChange={() => {}}
+          onChange={onChangeImageHandler}
         />
       </div>
-      <button type="submit" className="btn btn-success">
+      <button
+        type="submit"
+        className="btn btn-success"
+        disabled={areFieldsEmpty}
+      >
         Sign up
       </button>
       <div className="link">
-        Already a member? <a href="signup">Log in</a>
+        Already a member? <a href="login">Log in</a>
       </div>
     </RegisterFormStyled>
   );
