@@ -70,7 +70,11 @@ const useUser = (): UseUserStructure => {
         method: "POST",
         body: registerUserData,
       });
-    } catch (error) {}
+
+      showSuccessModal("Your account has been created");
+    } catch (error) {
+      showErrorModal("Ups, something went wrong");
+    }
   };
 
   return { loginUser, logoutUser, registerUser };
