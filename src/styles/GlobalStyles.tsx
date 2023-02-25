@@ -25,6 +25,7 @@ a {
 h1,h2{
   padding: 0;
   margin: 0;
+  font-size: 2rem;
 }
 
 ol, ul, li {
