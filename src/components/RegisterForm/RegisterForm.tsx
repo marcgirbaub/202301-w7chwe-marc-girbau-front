@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
 import { RegisterData } from "../../types";
 import RegisterFormStyled from "./RegisterFormStyled";
@@ -54,7 +55,7 @@ const RegisterForm = (): JSX.Element => {
     <RegisterFormStyled onSubmit={onSubmitHandler} autoComplete="off">
       <h2>Sign up</h2>
       <div className="mb-3">
-        <label htmlFor="unsername" className="form-label">
+        <label htmlFor="username" className="form-label">
           Username
         </label>
         <input
@@ -144,7 +145,7 @@ const RegisterForm = (): JSX.Element => {
         Sign up
       </button>
       <div className="link">
-        Already a member? <a href="login">Log in</a>
+        Already a member? <Link to="/login">Log in</Link>
       </div>
     </RegisterFormStyled>
   );

@@ -8,7 +8,11 @@ import {
   logoutUserActionCreator,
 } from "../../store/features/userSlice/userSlice";
 import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
-import { showErrorModal, showSuccessModal } from "../../modals/modals";
+import {
+  showErrorModal,
+  showLogoutSuccessModal,
+  showSuccessModal,
+} from "../../modals/modals";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
@@ -52,7 +56,7 @@ const useUser = (): UseUserStructure => {
 
       dispatch(loginUserActionCreator(logginUser));
       localStorage.setItem("token", token);
-      showSuccessModal("Login successfull");
+      showSuccessModal("Login successful");
       navigate("/");
     } catch (error) {
       showErrorModal("Invalid credentials");
@@ -62,6 +66,8 @@ const useUser = (): UseUserStructure => {
   const logoutUser = () => {
     removeToken();
     dispatch(logoutUserActionCreator());
+    navigate("login");
+    showLogoutSuccessModal();
   };
 
   const registerUser = async (registerUserData: FormData) => {
