@@ -55,7 +55,7 @@ const RegisterForm = (): JSX.Element => {
     <RegisterFormStyled onSubmit={onSubmitHandler} autoComplete="off">
       <h2>Sign up</h2>
       <div className="mb-3">
-        <label htmlFor="unsername" className="form-label">
+        <label htmlFor="username" className="form-label">
           Username
         </label>
         <input

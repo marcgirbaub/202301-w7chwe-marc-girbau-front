@@ -3,8 +3,7 @@ import styled from "styled-components";
 const LoginFormStyled = styled.form`
   border-radius: 1rem;
   padding: 2rem;
-  min-width: 300px;
-  max-width: 400px;
+  width: 400px;
   box-shadow: 0 0 5px 5px #e1e0e0;
 
   h2 {
