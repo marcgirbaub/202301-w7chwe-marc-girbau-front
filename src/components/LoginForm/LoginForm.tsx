@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useUser from "../../hooks/useUser/useUser";
+import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -31,7 +32,7 @@ const LoginForm = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={onSubmitHandler}>
+    <LoginFormStyled onSubmit={onSubmitHandler}>
       <h2>Log in</h2>
       <div className="mb-3">
         <label htmlFor="unsername" className="form-label">
@@ -64,7 +65,7 @@ const LoginForm = (): JSX.Element => {
       >
         Log in
       </button>
-    </form>
+    </LoginFormStyled>
   );
 };
 
