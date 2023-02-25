@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoginFormStyled = styled.form`
+const RegisterFormStyled = styled.form`
   border-radius: 1rem;
   padding: 2rem;
   max-width: 400px;
@@ -33,4 +33,4 @@ const LoginFormStyled = styled.form`
   }
 `;
 
-export default LoginFormStyled;
+export default RegisterFormStyled;
