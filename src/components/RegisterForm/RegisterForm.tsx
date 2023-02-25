@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
 import { RegisterData } from "../../types";
 import RegisterFormStyled from "./RegisterFormStyled";
@@ -144,7 +145,7 @@ const RegisterForm = (): JSX.Element => {
         Sign up
       </button>
       <div className="link">
-        Already a member? <a href="login">Log in</a>
+        Already a member? <Link to="/login">Log in</Link>
       </div>
     </RegisterFormStyled>
   );

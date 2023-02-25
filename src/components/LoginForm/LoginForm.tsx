@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import useUser from "../../hooks/useUser/useUser";
 import LoginFormStyled from "./LoginFormStyled";
@@ -66,7 +67,7 @@ const LoginForm = (): JSX.Element => {
         Log in
       </button>
       <div className="link">
-        Not a member? <a href="signup">Sign up</a>
+        Not a member? <Link to="/register">Sign up</Link>
       </div>
     </LoginFormStyled>
   );
