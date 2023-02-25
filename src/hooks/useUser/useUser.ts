@@ -11,6 +11,7 @@ import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
   logoutUser: () => void;
+  registerUser: (registerUserData: FormData) => Promise<void>;
 }
 
 const useUser = (): UseUserStructure => {
@@ -21,6 +22,7 @@ const useUser = (): UseUserStructure => {
   const apiUrl = process.env.REACT_APP_URL_API;
   const usersEndpoint = "users/";
   const loginEndpoint = "login/";
+  const registerEndpoint = "register/";
 
   const loginUser = async (userCredentials: UserCredentials) => {
     try {
@@ -29,7 +31,7 @@ const useUser = (): UseUserStructure => {
         {
           method: "POST",
           body: JSON.stringify(userCredentials),
-          headers: { "Content-type": "application/json" },
+          headers: { "Content-Type": "application/json" },
         }
       );
 
@@ -55,7 +57,16 @@ const useUser = (): UseUserStructure => {
     dispatch(logoutUserActionCreator());
   };
 
-  return { loginUser, logoutUser };
+  const registerUser = async (registerUserData: FormData) => {
+    try {
+      await fetch(`${apiUrl}${usersEndpoint}${registerEndpoint}`, {
+        method: "POST",
+        body: registerUserData,
+      });
+    } catch (error) {}
+  };
+
+  return { loginUser, logoutUser, registerUser };
 };
 
 export default useUser;
