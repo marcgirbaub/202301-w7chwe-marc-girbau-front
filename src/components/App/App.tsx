@@ -1,13 +1,7 @@
-import LoginForm from "../LoginForm/LoginForm";
-import RegisterForm from "../RegisterForm/RegisterForm";
+import Layout from "../Layout/Layout";
 
 const App = (): JSX.Element => {
-  return (
-    <div>
-      <LoginForm />
-      <RegisterForm />
-    </div>
-  );
+  return <Layout />;
 };
 
 export default App;
