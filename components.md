@@ -3,16 +3,25 @@
 # Data layer
 
 - user:
+
   - isLogged
   - username
   - token
   - id
 
+  ui:
+
+  - isLoading (boolean)
+
 # Data modifications
 
 - user:
+
   - login
   - logout
+
+- set isLoading
+- unset isLoading
 
 ## COMPONENTS
 
