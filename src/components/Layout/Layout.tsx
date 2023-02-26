@@ -14,7 +14,7 @@ const Layout = (): JSX.Element => {
   return (
     <LayoutStyled>
       <header className="main-header">
-        <h1 className="main-header__title">SocialBall</h1>
+        <h1 className="main-header__title">Social</h1>
         <nav className="main-header__nav nav">
           {!isLogged && (
             <Link to={"login"} className="nav__login">
@@ -31,7 +31,10 @@ const Layout = (): JSX.Element => {
             </Link>
           )}
           {isLogged && (
-            <button className="btn btn-danger nav__logout" onClick={logoutUser}>
+            <button
+              className="btn btn-warning nav__logout"
+              onClick={logoutUser}
+            >
               Log out
             </button>
           )}

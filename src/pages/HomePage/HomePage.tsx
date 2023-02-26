@@ -1,12 +1,9 @@
-import useApi from "../../hooks/useApi/useApi";
+import UsersList from "../../components/UsersList/UsersList";
 
 const HomePage = (): JSX.Element => {
-  const { getUsersProfiles } = useApi();
-
   return (
     <div>
-      <h1>Home</h1>
-      <button onClick={getUsersProfiles}>Hola</button>
+      <UsersList />
     </div>
   );
 };
