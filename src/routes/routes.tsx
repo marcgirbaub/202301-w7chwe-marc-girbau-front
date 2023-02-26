@@ -4,9 +4,7 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
-
-export const routeLogin = "/login";
-export const routeRegister = "/register";
+import Routes from "./types";
 
 export const routes = [
   {
@@ -14,8 +12,8 @@ export const routes = [
     element: <App />,
     children: [
       { path: "/", element: <ProtectedRoute element={<HomePage />} /> },
-      { path: routeLogin, element: <LoginPage /> },
-      { path: routeRegister, element: <RegisterPage /> },
+      { path: Routes.login, element: <LoginPage /> },
+      { path: Routes.register, element: <RegisterPage /> },
     ],
   },
 ];
