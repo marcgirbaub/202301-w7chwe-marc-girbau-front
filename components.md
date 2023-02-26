@@ -13,6 +13,8 @@
 
   - isLoading (boolean)
 
+  usersProfiles
+
 # Data modifications
 
 - user:
@@ -22,6 +24,8 @@
 
 - set isLoading
 - unset isLoading
+
+loadUsersProfiles
 
 ## COMPONENTS
 
