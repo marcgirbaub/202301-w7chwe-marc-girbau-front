@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
+import { showErrorModal } from "../../modals/modals";
 import { RegisterData } from "../../types";
 import RegisterFormStyled from "./RegisterFormStyled";
 
@@ -22,6 +23,14 @@ const RegisterForm = (): JSX.Element => {
 
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (registerData.password !== registerData.confirmPassword) {
+      showErrorModal("Passwords don't match, please try again");
+
+      setRegisterData({ ...registerData, password: "", confirmPassword: "" });
+
+      return;
+    }
 
     userFormData.append("username", registerData.username);
     userFormData.append("email", registerData.email);
@@ -71,7 +80,7 @@ const RegisterForm = (): JSX.Element => {
           Email
         </label>
         <input
-          type="text"
+          type="email"
           className="form-control"
           id="email"
           onChange={onChangeFieldHandler}
