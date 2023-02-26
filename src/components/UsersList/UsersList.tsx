@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useApi from "../../hooks/useApi/useApi";
 import { useAppSelector } from "../../store/hooks";
+import UserCard from "../UserCard/UserCard";
 
 const UsersList = (): JSX.Element => {
   const { getUsersProfiles } = useApi();
@@ -14,7 +15,9 @@ const UsersList = (): JSX.Element => {
   return (
     <>
       {usersProfiles.map((userProfile) => (
-        <li></li>
+        <li>
+          <UserCard userProfile={userProfile} key={userProfile.id} />
+        </li>
       ))}
     </>
   );
