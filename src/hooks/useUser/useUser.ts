@@ -80,11 +80,15 @@ const useUser = (): UseUserStructure => {
   };
 
   const registerUser = async (registerUserData: FormData) => {
+    dispatch(setIsLoadingActionCreator());
+
     try {
       await fetch(`${apiUrl}${usersEndpoint}${registerEndpoint}`, {
         method: "POST",
         body: registerUserData,
       });
+
+      dispatch(unsetIsLoadingActionCreator());
 
       showSuccessModal("Your account has been created");
     } catch (error) {
