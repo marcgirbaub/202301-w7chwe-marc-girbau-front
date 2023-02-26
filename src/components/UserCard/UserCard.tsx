@@ -10,7 +10,7 @@ const UserCard = ({
 }: UserCardProps): JSX.Element => {
   return (
     <UserCardStyled className="card" style={{ width: "18rem" }}>
-      <img src="..." className="card-img-top" alt="..." />
+      <img src="" className="card-img-top" alt={username} />
       <div className="card-body">
         <h5 className="card-title">{username}</h5>
       </div>

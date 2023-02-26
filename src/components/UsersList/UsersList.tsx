@@ -16,8 +16,8 @@ const UsersList = (): JSX.Element => {
   return (
     <UsersListStyled className="row row-cols-2 row-cols-md-4">
       {usersProfiles.map((userProfile) => (
-        <li className="col">
-          <UserCard userProfile={userProfile} key={userProfile.id} />
+        <li className="col" key={userProfile.id}>
+          <UserCard userProfile={userProfile} />
         </li>
       ))}
     </UsersListStyled>
