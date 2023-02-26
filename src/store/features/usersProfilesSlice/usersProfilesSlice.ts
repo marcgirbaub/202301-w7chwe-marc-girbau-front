@@ -19,6 +19,6 @@ const usersProfilesSlice = createSlice({
   },
 });
 
-export const usersProfilesSliceReducer = usersProfilesSlice.reducer;
+export const usersProfilesReducer = usersProfilesSlice.reducer;
 export const { loadUsersProfiles: loadUsersProfilesActionCreator } =
   usersProfilesSlice.actions;
