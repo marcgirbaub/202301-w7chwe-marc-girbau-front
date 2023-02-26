@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useUser from "../../hooks/useUser/useUser";
 import LoginFormStyled from "./LoginFormStyled";
+import { useAppSelector } from "../../store/hooks";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
+
+  const { isLoading } = useAppSelector((state) => state.ui);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -62,7 +65,7 @@ const LoginForm = (): JSX.Element => {
       <button
         type="submit"
         className="btn btn-primary"
-        disabled={areFieldsEmpty}
+        disabled={areFieldsEmpty || isLoading}
       >
         Log in
       </button>
