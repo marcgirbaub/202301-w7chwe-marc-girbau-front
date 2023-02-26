@@ -1,11 +1,15 @@
 import { ToastContainer } from "react-toastify";
 import { Outlet, Link } from "react-router-dom";
 import LayoutStyled from "./LayoutStyled";
+import Loader from "../Loader/Loader";
+import { useAppSelector } from "../../store/hooks";
 
 const Layout = (): JSX.Element => {
+  const { isLoading } = useAppSelector((state) => state.ui);
+
   return (
     <LayoutStyled>
-      <div className="main-header">
+      <header className="main-header">
         <h1 className="main-header__title">SocialBall</h1>
         <nav className="main-header__nav nav">
           <Link to={"login"} className="nav__login">
@@ -15,8 +19,9 @@ const Layout = (): JSX.Element => {
             Sign up
           </Link>
         </nav>
-      </div>
+      </header>
       <ToastContainer hideProgressBar />
+      {isLoading && <Loader />}
       <Outlet />
     </LayoutStyled>
   );
