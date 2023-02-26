@@ -17,6 +17,7 @@ import {
   setIsLoadingActionCreator,
   unsetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
+import Routes from "../../routes/types";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
@@ -93,7 +94,7 @@ const useUser = (): UseUserStructure => {
 
       showSuccessModal("Your account has been created");
 
-      navigate("/login");
+      navigate(Routes.login);
     } catch (error) {
       showErrorModal("Ups, something went wrong");
       dispatch(unsetIsLoadingActionCreator());
