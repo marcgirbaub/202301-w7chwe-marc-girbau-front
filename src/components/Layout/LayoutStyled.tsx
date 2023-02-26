@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const LayoutStyled = styled.header`
+const LayoutStyled = styled.div`
+  position: relative;
+
   .main-header {
     display: flex;
     flex-direction: row;

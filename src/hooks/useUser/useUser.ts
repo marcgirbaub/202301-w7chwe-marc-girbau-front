@@ -13,6 +13,10 @@ import {
   showLogoutSuccessModal,
   showSuccessModal,
 } from "../../modals/modals";
+import {
+  setIsLoadingActionCreator,
+  unsetIsLoadingActionCreator,
+} from "../../store/features/uiSlice/uiSlice";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
@@ -32,6 +36,8 @@ const useUser = (): UseUserStructure => {
   const registerEndpoint = "register/";
 
   const loginUser = async (userCredentials: UserCredentials) => {
+    dispatch(setIsLoadingActionCreator());
+
     try {
       const response = await fetch(
         `${apiUrl}${usersEndpoint}${loginEndpoint}`,
@@ -54,8 +60,11 @@ const useUser = (): UseUserStructure => {
         id,
       };
 
+      dispatch(unsetIsLoadingActionCreator());
       dispatch(loginUserActionCreator(logginUser));
+
       localStorage.setItem("token", token);
+
       showSuccessModal("Login successful");
       navigate("/");
     } catch (error) {
