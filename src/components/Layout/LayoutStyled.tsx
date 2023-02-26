@@ -25,7 +25,10 @@ const LayoutStyled = styled.div`
     }
 
     &__signup {
-      border: 1px solid black;
+      border-radius: 5px 15px;
+    }
+
+    &__logout {
       border-radius: 5px 15px;
     }
   }

@@ -69,6 +69,7 @@ const useUser = (): UseUserStructure => {
       navigate("/");
     } catch (error) {
       showErrorModal("Invalid credentials");
+      dispatch(unsetIsLoadingActionCreator());
     }
   };
 
@@ -91,8 +92,11 @@ const useUser = (): UseUserStructure => {
       dispatch(unsetIsLoadingActionCreator());
 
       showSuccessModal("Your account has been created");
+
+      navigate("/login");
     } catch (error) {
       showErrorModal("Ups, something went wrong");
+      dispatch(unsetIsLoadingActionCreator());
     }
   };
 
