@@ -66,7 +66,7 @@ const useUser = (): UseUserStructure => {
 
       localStorage.setItem("token", token);
 
-      showSuccessModal("Login successful");
+      showSuccessModal(`Welcome back, ${username}!`);
       navigate("/");
     } catch (error) {
       showErrorModal("Invalid credentials");

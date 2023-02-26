@@ -2,11 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
 import { showErrorModal } from "../../modals/modals";
+import { useAppSelector } from "../../store/hooks";
 import { RegisterData } from "../../types";
 import RegisterFormStyled from "./RegisterFormStyled";
 
 const RegisterForm = (): JSX.Element => {
   const { registerUser } = useUser();
+
+  const { isLoading } = useAppSelector((state) => state.ui);
 
   const initialRegisterData: RegisterData = {
     username: "",
@@ -149,7 +152,7 @@ const RegisterForm = (): JSX.Element => {
       <button
         type="submit"
         className="btn btn-success"
-        disabled={areFieldsEmpty}
+        disabled={areFieldsEmpty || isLoading}
       >
         Sign up
       </button>
