@@ -11,7 +11,9 @@ const UsersList = (): JSX.Element => {
     getUsersProfiles();
   }, [getUsersProfiles]);
 
-  const { usersProfiles } = useAppSelector((state) => state.usersProfiles);
+  const usersProfiles = useAppSelector(
+    (state) => state.usersProfiles.usersProfiles
+  );
 
   return (
     <UsersListStyled className="row row-cols-2 row-cols-md-4">

@@ -9,11 +9,11 @@
   - token
   - id
 
-  ui:
+- ui:
 
   - isLoading (boolean)
 
-  usersProfiles
+- usersProfiles
 
 # Data modifications
 
@@ -25,7 +25,9 @@
 - set isLoading
 - unset isLoading
 
-loadUsersProfiles
+- loadUsersProfiles
+- add a user to enemies
+- add a user to friends
 
 ## COMPONENTS
 
@@ -35,8 +37,13 @@ loadUsersProfiles
 
 # Layout
 
-- shows the header
+- shows the header with heading title "Social"
+- Shows the buttons to "Sign in", "Log in" or "Log out" depending if user isLogged
 - shows the outlet
+
+# Loader
+
+- shows the loader spinner when isLoading is set to true
 
 # RegisterForm
 
@@ -48,15 +55,28 @@ loadUsersProfiles
 - Shows an input for the "age"
 - Shows an input for the "avatar" image
 - Show a button to sign up
+- On submit calls the action assigned
 
 # LoginForm
 
 - Shows an input for the "username"
 - Shows an input for the "password"
 - Shows a button to log in
+- On submit calls the action assigned
 
 # List of users
 
-# User
+- Receives the list of usersProfiles
+- Shows the list of users
+- Sends a user to UserCar component for each user of the list
 
-# Button
+# UserCard
+
+- Receives a user
+- Receives the action to send to friends
+- Receives the action to send to enemies
+- Shows a user data:
+  - image
+  - username
+  - age
+  - email
