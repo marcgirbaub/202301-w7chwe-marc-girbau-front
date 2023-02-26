@@ -1,16 +1,8 @@
 import { ToastContainer } from "react-toastify";
 import { Outlet, Link } from "react-router-dom";
-import useToken from "../../hooks/useToken/useToken";
-import { useEffect } from "react";
 import LayoutStyled from "./LayoutStyled";
 
 const Layout = (): JSX.Element => {
-  const { getToken } = useToken();
-
-  useEffect(() => {
-    getToken();
-  }, [getToken]);
-
   return (
     <LayoutStyled>
       <div className="main-header">
